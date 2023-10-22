@@ -16,12 +16,24 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer base {
+  .active {
+    @apply border-b-4 border-black transition-all duration-300 !important;
+  }
+
+  .dropdown {
+    @apply w-full lg:max-w-[296px] cursor-pointer;
+  }
+  .dropdown-btn {
+    @apply flex h-[64px] items-center px-[18px] border rounded-lg;
+  }
+  .dropdown-icon-primary {
+    @apply text-2xl mr-[10px];
+  }
+  .dropdown-icon-secondary {
+    @apply text-2xl ml-auto;
+  }
+  .dropdown-menu {
+    @apply px-6 py-8 text-[15px] space-y-6 shadow-md bg-white absolute w-full z-10 list-none rounded-b-lg;
+  }
 }

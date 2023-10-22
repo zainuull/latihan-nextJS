@@ -1,0 +1,59 @@
+{
+  "datas": [
+    {
+      "_id": "1697306816833",
+      "name": "aaaa",
+      "address": "beaks",
+      "destination_city": "Solo",
+      "price": 450000,
+      "total_buy": 3,
+      "discount": 135000,
+      "total_price": 1215000,
+      "id": 1
+    },
+    {
+      "_id": "1697306888133",
+      "name": "bbbbb",
+      "address": "aaaa",
+      "destination_city": "Semarang",
+      "price": 350000,
+      "total_buy": 3,
+      "discount": 105000,
+      "total_price": 945000,
+      "id": 2
+    },
+    {
+      "_id": "1697306941833",
+      "name": "cccc",
+      "address": "ddd",
+      "destination_city": "Yogyakarta",
+      "price": 400000,
+      "total_buy": 3,
+      "discount": 120000,
+      "total_price": 1080000,
+      "id": 3
+    },
+    {
+      "_id": "1697306969788",
+      "name": "eee",
+      "address": "ddd",
+      "destination_city": "Surabaya",
+      "price": 550000,
+      "total_buy": 3,
+      "discount": 165000,
+      "total_price": 1485000,
+      "id": 4
+    },
+    {
+      "_id": "1697306982317",
+      "name": "fff",
+      "address": "aaaa",
+      "destination_city": "Solo",
+      "price": 450000,
+      "total_buy": 1,
+      "discount": 0,
+      "total_price": 450000,
+      "id": 5
+    }
+  ]
+}
