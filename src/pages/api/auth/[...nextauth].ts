@@ -1,3 +1,5 @@
+import { getAccount } from '@/lib/firebase/services';
+import { compare } from 'bcrypt';
 import { NextAuthOptions } from 'next-auth';
 import NextAuth from 'next-auth/next';
 import CredentialsProvider from 'next-auth/providers/credentials';
@@ -12,18 +14,20 @@ const AuthOptions: NextAuthOptions = {
       name: 'Credentials',
       credentials: {
         email: { label: 'Email', type: 'email' },
-        fullName: { label: 'Full Name', type: 'text' },
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        const { email, fullName, password }: any = credentials as {
+        const { email, password } = credentials as {
           email: string;
-          fullName: string;
           password: string;
         };
-        const user: any = { id: 1, email: email, fullName: fullName, password: password };
+        const user: any = await getAccount({ email });
         if (user) {
-          return user;
+          const passwordConfirm = await compare(password, user.password);
+          if (passwordConfirm) {
+            return user;
+          }
+          return null;
         } else {
           return null;
         }
@@ -35,17 +39,25 @@ const AuthOptions: NextAuthOptions = {
       if (account?.provider === 'credentials') {
         token.email = user.email;
         token.fullName = user.fullName;
+        token.role = user.role;
       }
       return token;
     },
     async session({ session, token }: any) {
       if ('email' in token) {
         session.user.email = token.email;
-      } if ('fullName' in token) {
+      }
+      if ('fullName' in token) {
         session.user.fullName = token.fullName;
+      }
+      if ('role' in token) {
+        session.user.role = token.role;
       }
       return session;
     },
+  },
+  pages: {
+    signIn: '/auth/login',
   },
 };
 

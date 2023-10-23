@@ -7,5 +7,5 @@ export function mainMiddleware(req: NextRequest) {
   return res
 }
 
-export default withAuth(mainMiddleware, ['/profile','/product','/product/server','/product/static'])
+export default withAuth(mainMiddleware, ['/profile','/product','/product/server','/product/static','/','/dashboard'])
 
